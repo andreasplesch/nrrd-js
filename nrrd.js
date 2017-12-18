@@ -1128,7 +1128,9 @@ function checkNRRD(ret) {
     // TODO: Check space/orientation fields.
     
     // We should either have inline data or external data
-    if ((ret.data === undefined || ret.data.length === 0) && (ret.buffer === undefined || ret.buffer.byteLength === 0) && ret.dataFile === undefined) {
+    if ((ret.data === undefined || (ret.data && ret.data.length === 0)) && 
+        (ret.buffer === undefined || (ret.buffer && ret.buffer.byteLength === 0)) && 
+        ret.dataFile === undefined) {
         throw new Error("NRRD file has neither inline or external data!");
     }
 }
